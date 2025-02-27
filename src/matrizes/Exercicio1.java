@@ -27,9 +27,9 @@ public class Exercicio1 {
     }
 
     public static void imprimeMatriz(int[][] matriz) {
-        for(int linha = 0; linha < matriz.length; linha++) {
-            for(int coluna = 0; coluna < matriz[linha].length; coluna++) {
-                System.out.printf("%3d ", matriz[linha][coluna]);
+        for (int[] linha : matriz) {
+            for (int elemento : linha) {
+                System.out.printf("%3d", elemento);
             }
             System.out.println();
         }
