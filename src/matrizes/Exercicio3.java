@@ -21,7 +21,8 @@ public class Exercicio3 {
     }
 
     public static int maiorValorMatriz(int matriz[][]) {
-        int maiorValor = Integer.MIN_VALUE;
+            int maiorValor = matriz[0][0];
+            // Ou -> int maiorValor = Integer.MIN_VALUE;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 if(matriz[i][j] > maiorValor) {
