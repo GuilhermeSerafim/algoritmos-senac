@@ -1,0 +1,4 @@
+Jose da Silva;10.0
+Manoel Pereira;5.0
+Carlos Dias;7.0
+Ana Andrade;6.5

@@ -20,7 +20,7 @@ public class Exercicio3 {
         try (Scanner leitor  = new Scanner(file)){
             while(leitor.hasNextLine()) {
                 String linha = leitor.nextLine();
-                if(linha.contains(String.valueOf(caracter))) {
+                if(linha.contains(String.valueOf(caracter))) { // String.valueOf para converter valores de tipos primitivos ou objetos em strings.
                     contador++;
                 }
             }
