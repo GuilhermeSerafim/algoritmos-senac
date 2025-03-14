@@ -23,10 +23,18 @@ public class Exercicio4 {
         String nomeArq = in.nextLine();
         in.close();
         File file = new File(nomeArq + ".txt");
+        String[] nomeNotaAluno = new String[100];
         try (Scanner leitor  = new Scanner(file)){
             while(leitor.hasNextLine()) {
                 String linha = leitor.nextLine();
-                String[] nomeNotaAluno = linha.split(";");
+                nomeNotaAluno = linha.split(";");
+            }
+            for (int i = 0; i < nomeNotaAluno.length; i++) {
+                if(i % 2 == 0) {
+                    System.out.println("Nome: " + nomeNotaAluno[i]);
+                } else {
+                    System.out.println("Nota: " + nomeNotaAluno[i]);
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: " + file.getAbsolutePath());
