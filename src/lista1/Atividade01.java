@@ -3,9 +3,28 @@ package lista1;
 import java.util.Random;
 import java.util.Scanner;
 
+/*
+Entrega a Atividade 1 - Algoritmos e Programação II
+
+Nós,
+
+André Luiz Duran de Oliveira
+Guilherme da Silva Serafim
+Kayky de lemos Costa
+
+declaramos que
+
+todas as respostas são fruto de nosso próprio trabalho,
+não copiamos respostas de colegas externos à equipe,
+não disponibilizamos nossas respostas para colegas externos ao grupo e
+não realizamos quaisquer outras atividades desonestas para nos beneficiar ou prejudicar outros.
+*/
+
+
 public class Atividade01 {
     public static void main(String[] args) {
-        // Criação dos objetos scanner e random para interação com o usuário e geração
+        // Criação dos objetos scanner e random para inter9
+        // ação com o usuário e geração
         // de números aleatórios
         Scanner scanner = new Scanner(System.in);
         int[] vetor = null; // Inicializa o vetor como null, até ser preenchido com dados
@@ -14,6 +33,7 @@ public class Atividade01 {
         do {
             // Exibição do menu para o usuário
             System.out.println("▬▬▬ MENU ▬▬▬");
+            System.out.println("0. Encerrar o programa;");
             System.out.println("1. Inicializar o vetor com números aleatórios;");
             System.out.println("2. Imprimir o vetor;");
             System.out.println("3. Verificar se um determinado número está contido no vetor;");
@@ -27,15 +47,20 @@ public class Atividade01 {
 
             // Switch para controlar as opções do menu
             switch (opcao) {
+                case 0:
+                    System.out.println("Encerrando o programa...");
+                    break;
                 case 1:
                     // Inicializa o vetor com números aleatórios
+                    Random random = new Random();
                     System.out.print("Digite o tamanho do vetor: ");
                     int tamanhoVetor = scanner.nextInt(); // Recebe o tamanho do vetor
                     System.out.print("Digite o valor limite para os números que serão gerados, para popular o vetor: ");
                     int valorLimite = scanner.nextInt(); // Recebe o valor máximo para os números gerados
                     vetor = new int[tamanhoVetor]; // Aloca o vetor
-                    inicializarVetorComNumerosAleatorios(tamanhoVetor, valorLimite, vetor); // Preenche o vetor com
-                    // números aleatórios
+                    for (int i = 0; i < tamanhoVetor; i++) {
+                        vetor[i] = random.nextInt(valorLimite + 1); // Gera números aleatórios até o limite especificado
+                    }
                     System.out.println("Vetor inicializado com números aleatórios.");
                     break;
                 case 2:
@@ -79,7 +104,7 @@ public class Atividade01 {
                         break;
                     }
                     double mediaNumerosPares = calcularMediaDosNumerosPares(vetor); // Calcula a média
-                    System.out.println("Média dos valores pares: " + mediaNumerosPares);
+                    System.out.printf("Média dos valores pares: %.2f\n", mediaNumerosPares);
                     break;
                 case 6:
                     // Calcula o percentual de números ímpares no vetor
@@ -121,14 +146,6 @@ public class Atividade01 {
             // Linha separadora para melhor leitura
         } while (opcao != 0); // Encerra o loop quando a opção 0 é escolhida
         scanner.close(); // Fecha o scanner
-    }
-
-    // Função para inicializar o vetor com números aleatórios
-    public static void inicializarVetorComNumerosAleatorios(int tamanhoVetor, int limiteValor, int vetor[]) {
-        Random random = new Random();
-        for (int i = 0; i < tamanhoVetor; i++) {
-            vetor[i] = random.nextInt(limiteValor + 1); // Gera números aleatórios até o limite especificado
-        }
     }
 
     // Função para identificar o maior número no vetor
