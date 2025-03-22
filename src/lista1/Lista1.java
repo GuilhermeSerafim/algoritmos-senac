@@ -21,7 +21,7 @@ não realizamos quaisquer outras atividades desonestas para nos beneficiar ou pr
 */
 
 
-public class Atividade01 {
+public class Lista1 {
     public static void main(String[] args) {
         // Criação dos objetos scanner e random para inter9
         // ação com o usuário e geração
