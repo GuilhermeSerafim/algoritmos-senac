@@ -38,7 +38,7 @@ public class Exercicio3 {
         int[][] matriz = new int[linhas][colunas];
         for(int linha = 0; linha < matriz.length; linha++ ) {
             for(int coluna = 0; coluna < matriz[linha].length; coluna++) {
-                matriz[linha][coluna] = r.nextInt(-10, 10); // -10 inclusivo,10 exclusivo
+                matriz[linha][coluna] = r.nextInt(10); // -10 inclusivo,10 exclusivo
             }
         }
         return matriz;
