@@ -9,7 +9,7 @@ public class BubbleSort {
         int[] arr = new int[100];
 
         // Preenche o array com números aleatórios de 0 a 100
-        populaArrNrsRandons(arr, 100);
+        populaArrNrsRandons(arr, 20);
 
         // Ordena o array usando o algoritmo Bubble Sort
         bubbleSortCrescente(arr);
@@ -39,9 +39,10 @@ public class BubbleSort {
     // Ordena o vetor usando o algoritmo Bubble Sort
     public static void bubbleSortCrescente(int[] vetor) {
         int aux;
+        // A princípio, a cada interação do primeiro for, o maior número vai para o final (bubble)
         for (int i = 0; i < vetor.length - 1; i++) {
-            // A cada iteração externa, o maior valor é posicionado no final,
-            // então podemos ignorar as últimas posições já ordenadas
+            // A cada iteração externa (primeiro for), o maior valor é posicionado no final (- i),
+            // então podemos ignorar as últimas posições já ordenadas (vetor.length - i - 1)
             for (int j = 0; j < vetor.length - i - 1; j++) {
                 // Troca os elementos se estiverem fora de ordem
                 if (vetor[j] > vetor[j + 1]) {
