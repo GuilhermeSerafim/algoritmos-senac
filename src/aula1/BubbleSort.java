@@ -53,6 +53,22 @@ public class BubbleSort {
         }
     }
 
+    public static void bubbleSortDescrente(int[] vetor) {
+        int aux;
+        for (int i = 0; i < vetor.length - 1; i++) {
+            // A cada iteração externa, o maior valor é posicionado no final,
+            // então podemos ignorar as últimas posições já ordenadas
+            for (int j = 0; j < vetor.length - i - 1; j++) {
+                // Troca os elementos se estiverem fora de ordem
+                if (vetor[j] < vetor[j + 1]) { // Descrescente
+                    aux = vetor[j];
+                    vetor[j] = vetor[j + 1];
+                    vetor[j + 1] = aux;
+                }
+            }
+        }
+    }
+
     // Realiza busca linear (sequencial) no vetor
     public static int buscaLinear(int vetor[], int numeroASerProcurado) {
         for (int i = 0; i < vetor.length; i++) {
