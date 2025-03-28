@@ -81,6 +81,7 @@ public class BubbleSort {
     }
 
     // Realiza busca binária no vetor (é necessário que ele esteja ordenado)
+    // Só vai funcionar se o vetor for crescente
     public static int buscaBinaria(int vetor[], int numeroASerProcurado) {
         int inicio = 0;
         int fim = vetor.length - 1;
