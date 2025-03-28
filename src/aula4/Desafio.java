@@ -1,4 +1,4 @@
-package aula1;
+package aula4;
 // Separe os números pares e ímpares do conjunto (pares a esquerda e impares na direita em um arr).
 // Em seguida, ordene os números pares em ordem crescente.
 // Após isso, ordene os números ímpares também em ordem crescente.

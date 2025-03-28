@@ -1,4 +1,4 @@
-package aula1;
+package aula4;
 
 import java.util.Arrays;
 import java.util.Random;
