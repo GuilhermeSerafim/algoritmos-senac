@@ -1,4 +1,4 @@
-package arquivos;
+package aula2.arquivos;
 
 import java.io.File;
 import java.io.FileNotFoundException;

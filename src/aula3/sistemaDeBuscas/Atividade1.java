@@ -1,4 +1,4 @@
-package sistemaDeBuscas;
+package aula3.sistemaDeBuscas;
 
 import java.util.Arrays;
 import java.util.Random;

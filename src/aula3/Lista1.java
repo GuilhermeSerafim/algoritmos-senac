@@ -1,4 +1,4 @@
-package lista1;
+package aula3;
 
 import java.util.Random;
 import java.util.Scanner;

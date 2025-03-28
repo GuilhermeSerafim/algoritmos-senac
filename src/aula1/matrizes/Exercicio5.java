@@ -1,7 +1,4 @@
-package matrizes;
-
-import java.util.Random;
-import java.util.Scanner;
+package aula1.matrizes;
 
 public class Exercicio5 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package arquivos;
+package aula2.arquivos;
 // Algumas vezes podemos processar os dados armazenados em arquivo texto,
 //onde cada linha corresponderia a um nome do aluno e sua nota, separadas por
 //um ponto e vírgula (“;”).

@@ -1,7 +1,5 @@
-package matrizes;
+package aula1.matrizes;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
