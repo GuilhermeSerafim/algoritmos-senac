@@ -12,8 +12,12 @@ public class SelectionSort {
         }
         System.out.println("No order: ");
         System.out.println(Arrays.toString(numbers));
-        System.out.println("Order asc: ");
+        //➡️ Salva o tempo atual em milissegundos antes de executar o algoritmo. É o "tempo de início".
+        long startTime = System.currentTimeMillis();
         selectionSort(numbers);
+        // ➡️ Salva o tempo atual novamente, após a execução do algoritmo. É o "tempo de fim".
+        long endTime = System.currentTimeMillis();
+        System.out.println("Order asc, took: " + (endTime + startTime) + "ms");
         System.out.println(Arrays.toString(numbers));
     }
 
