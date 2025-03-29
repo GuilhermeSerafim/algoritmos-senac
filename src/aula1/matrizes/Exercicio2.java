@@ -17,6 +17,7 @@ public class Exercicio2 {
 
         System.out.println("▬▬▬▬ MATRIZ TRANSPOSTA: ▬▬▬▬");
         int[][] matrizTransposta = gerarMatrizTransposta(matriz);
+        in.close();
         imprimeMatriz(matrizTransposta);
     }
 

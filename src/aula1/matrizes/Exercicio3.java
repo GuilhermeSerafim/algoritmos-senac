@@ -18,6 +18,7 @@ public class Exercicio3 {
         imprimeMatriz(matriz);
         System.out.println("▬▬▬▬ MAIOR VALOR DA MATRIZ ORIGINAL: ▬▬▬▬");
         System.out.println(maiorValorMatriz(matriz));
+        in.close();
     }
 
     public static int maiorValorMatriz(int matriz[][]) {

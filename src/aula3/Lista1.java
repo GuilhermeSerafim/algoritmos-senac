@@ -40,8 +40,7 @@ public class Lista1 {
             System.out.println("4. Buscar o maior número armazenado no vetor;");
             System.out.println("5. Calcular a média dos números pares armazenados no vetor;");
             System.out.println("6. Calcular o percentual dos números ímpares armazenados no vetor;");
-            System.out.println("7. Calcular a média centralizada dos números armazenados no vetor;");
-            System.out.println("8. Verificar se dado um valor existe dois números em posições distintas que somados são iguais ao valor informado.");
+            System.out.println("7. Verificar se dado um valor existe dois números em posições distintas que somados são iguais ao valor informado.");
             System.out.print("Selecione uma opção: ");
             opcao = scanner.nextInt(); // Leitura da opção escolhida
 
@@ -116,15 +115,6 @@ public class Lista1 {
                     System.out.printf("A porcentagem de números ímpares é: %.1f%%\n", percentualNumerosImpares);
                     break;
                 case 7:
-                    // Calcula a média centralizada do vetor (desconsiderando o menor e maior valor)
-                    if (vetor == null) {
-                        System.out.println("O vetor não foi inicializado.");
-                        break;
-                    }
-                    double mediaCentralizada = calcularMediaCentralizada(vetor); // Calcula a média centralizada
-                    System.out.printf("Média centralizada: %.2f\n", mediaCentralizada);
-                    break;
-                case 8:
                     // Verifica se existe um par de números que somados são iguais a um valor
                     // informado
                     if (vetor == null) {
@@ -200,43 +190,6 @@ public class Lista1 {
         return (contadorImpares * 100.0) / vetor.length; // Retorna o percentual de números ímpares
     }
 
-    // Função para calcular a média centralizada (desconsiderando o menor e maior
-    // número)
-    public static double calcularMediaCentralizada(int[] vetor) {
-        if (vetor.length < 3) {
-            System.out.println("Erro: Não é possível calcular a média centralizada com menos de 3 elementos.");
-            return 0;
-        }
-
-        int minimo = Integer.MAX_VALUE, maximo = Integer.MIN_VALUE;
-        // countMax e countMin contam quantas vezes o maior e o menor valor aparecem. Isso garante que apenas uma cópia de cada seja removida no cálculo da média centralizada.
-        int soma = 0, countMin = 0, countMax = 0;
-
-        // Encontrando o menor e o maior valor
-        for (int num : vetor) {
-            if (num < minimo) {
-                minimo = num;
-                countMin = 1;
-            } else if (num == minimo) {
-                countMin++;
-            }
-
-            if (num > maximo) {
-                maximo = num;
-                countMax = 1;
-            } else if (num == maximo) {
-                countMax++;
-            }
-
-            soma += num;
-        }
-
-        // Remove apenas uma ocorrência do menor e do maior valor
-        soma -= minimo;
-        soma -= maximo;
-
-        return (double) soma / (vetor.length - 2);
-    }
 
     // Função para verificar se existe um par de números no vetor cuja soma seja
     // igual ao valor informado

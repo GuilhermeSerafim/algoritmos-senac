@@ -26,6 +26,7 @@ public class BubbleSort {
             System.out.println("Número não encontrado");
         else
             System.out.println("Número encontrado no índice: " + indiceBuscado);
+        in.close();
     }
 
     // Preenche o vetor com números aleatórios de 0 até o limite informado
@@ -39,9 +40,11 @@ public class BubbleSort {
     // Ordena o vetor usando o algoritmo Bubble Sort
     public static void bubbleSortCrescente(int[] vetor) {
         int aux;
-        // A princípio, a cada interação do primeiro for, o maior número vai para o final (bubble)
+        // A princípio, a cada interação do primeiro for, o maior número vai para o
+        // final (bubble)
         for (int i = 0; i < vetor.length - 1; i++) {
-            // A cada iteração externa (primeiro for), o maior valor é posicionado no final (- i),
+            // A cada iteração externa (primeiro for), o maior valor é posicionado no final
+            // (- i),
             // então podemos ignorar as últimas posições já ordenadas (vetor.length - i - 1)
             for (int j = 0; j < vetor.length - i - 1; j++) {
                 // Troca os elementos se estiverem fora de ordem

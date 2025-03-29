@@ -13,6 +13,7 @@ public class Exercicio1 {
         colunas = in.nextInt();
         int[][] matriz = gerarMatriz(linhas, colunas);
         imprimeMatriz(matriz);
+        in.close();
     }
 
     public static int[][] gerarMatriz(int linhas, int colunas) {

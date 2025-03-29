@@ -14,6 +14,7 @@ public class Exercicio4 {
         imprimeMatriz(matriz);
         System.out.println("▬▬▬▬ TRAÇO DA MATRIZ: ▬▬▬▬");
         System.out.println(retornaTracoMatrizQuadrada(matriz));
+        in.close();
     }
     public static int retornaTracoMatrizQuadrada(int matrizQuadrada[][] ) {
         int traco = 0;

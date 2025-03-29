@@ -29,6 +29,7 @@ public class Exercicio6 {
         System.out.println("▬▬▬▬ MATRIZ F (A / B): ▬▬▬▬");
         double[][] matrizF = divideMatriz(matrizA, matrizB);
         imprimeMatriz(matrizF);
+        in.close();
     }
     public static int[][] gerarMatriz(int linhas, int colunas) {
         Random r = new Random();

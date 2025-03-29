@@ -19,7 +19,7 @@ public class Exercicio1 {
         moverParesParaDireita(arr);
         System.out.println("Números ordenados por impares a esquerda e pares a direita");
         System.out.println(Arrays.toString(arr));
-
+        in.close();
     }
 
     public static void populaArr(int[] vetor, int limite) {

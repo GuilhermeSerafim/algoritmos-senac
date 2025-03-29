@@ -13,7 +13,7 @@ public class Atividade1 {
         String visualizarVetor = "";
         int[] arr = new int[100];
         for(int i = 0; i < arr.length; i++) {
-            arr[i] = r.nextInt(1, 1001); // 1 à 1000
+            arr[i] = r.nextInt(1001); // 0 à 1000
         }
         Arrays.sort(arr);
         System.out.println("Vetor de 100 valores inteiros ordenados gerados!");
@@ -30,6 +30,7 @@ public class Atividade1 {
         int posicaoEncontrada = buscaBinaria(arr, numeroBuscado);
         if(posicaoEncontrada == -1) System.out.println("Valor não encontrado");
         else System.out.printf("Número %d encontrado na posição %d.%n", numeroBuscado, posicaoEncontrada);
+        in.close();
     }
 
 
