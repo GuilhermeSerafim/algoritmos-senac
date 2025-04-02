@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class SelectionSort {
     public static void main(String[] args) {
-        int[] numbers = new int[10];
+        int[] numbers = new int[1000];
         Random random = new Random();
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = random.nextInt(10 );
+            numbers[i] = random.nextInt(1000 );
         }
         System.out.println("No order: ");
         System.out.println(Arrays.toString(numbers));
@@ -17,7 +17,7 @@ public class SelectionSort {
         selectionSort(numbers);
         // ➡️ Salva o tempo atual novamente, após a execução do algoritmo. É o "tempo de fim".
         long endTime = System.currentTimeMillis();
-        System.out.println("Order asc, took: " + (endTime + startTime) + "ms");
+        System.out.println("Order asc, took: " + (endTime - startTime) + "ms");
         System.out.println(Arrays.toString(numbers));
     }
 
