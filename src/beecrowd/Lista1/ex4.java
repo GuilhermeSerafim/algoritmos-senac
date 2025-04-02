@@ -17,5 +17,6 @@ public class ex4 {
                 System.out.printf("A[%d] = %.2f%n", i, arr[i]);
             }
         }
+        in.close();
     }
 }

@@ -15,5 +15,6 @@ public class ex3 {
             System.out.println("N[" + i + "] = " + x);
             x *= 2;
         }
+        in.close();
     }
 }
