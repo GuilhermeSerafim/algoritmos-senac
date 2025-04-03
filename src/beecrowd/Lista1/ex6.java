@@ -32,35 +32,38 @@ public class ex6 {
         // Distribuindo valores entre ímpares e pares
         for (int i = 0; i < vTodos.length; i++) {
             if (vTodos[i] % 2 == 0) {
-                // Se houver valor na última posição, de acordo com a paridade, vou imprimir e replicar
-                if (vPar[4] != 0) {
-                    for(int j = 0; j < vPar.length; j++) {
-                        System.out.printf("par[%d] = %d%n", IContagemPar, vPar[j]);
+                vPar[IContagemPar] = vTodos[i];
+                IContagemPar++;
+
+                if (IContagemPar == 5) {
+                    for (int j = 0; j < 5; j++) {
+                        System.out.printf("par[%d] = %d%n", j, vPar[j]);
                     }
-                    vPar[4] = 0; // Resetando a última posição (para ir populando o arr no else da paridade)
-                    IContagemPar = 0; // Resetando interação da paridade
-                    vPar[IContagemPar] = vTodos[i];
-                    IContagemPar++;
-                } else {
-                    vPar[IContagemPar] = vTodos[i];
-                    IContagemPar++;
+                    IContagemPar = 0;
                 }
             } else {
-                if (vImpar[4] != 0) {
-                    for (int j = 0; i < vImpar.length; i++) {
-                        System.out.printf("impar[%d] = %d%n", IContagemImpar, vImpar[j]);
+                vImpar[IContagemImpar] = vTodos[i];
+                IContagemImpar++;
+
+                if (IContagemImpar == 5) {
+                    for (int j = 0; j < 5; j++) {
+                        System.out.printf("impar[%d] = %d%n", j, vImpar[j]);
                     }
-                    vImpar[4] = 0;
                     IContagemImpar = 0;
-                    vImpar[IContagemImpar] = vTodos[i];
-                    IContagemImpar++;
-                } else {
-                    vImpar[IContagemImpar] = vTodos[i];
-                    IContagemImpar++;
                 }
             }
         }
 
+        // Primeiro imprime os ímpares restantes
+        for (int i = 0; i < IContagemImpar; i++) {
+            System.out.printf("impar[%d] = %d%n", i, vImpar[i]);
+        }
+
+        // Depois os pares restantes
+        for (int i = 0; i < IContagemPar; i++) {
+            System.out.printf("par[%d] = %d%n", i, vPar[i]);
+        }
+        
         in.close();
 
     }
