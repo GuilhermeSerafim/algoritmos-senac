@@ -22,6 +22,7 @@ public class ex6 {
         int[] vPar = new int[5];
         int[] vImpar = new int[5];
         int[] vTodos = new int[15];
+        int IContagemImpar = 0, IContagemPar = 0;
 
         // Inputando valores
         for (int i = 0; i < vTodos.length; i++) {
@@ -30,9 +31,37 @@ public class ex6 {
 
         // Distribuindo valores entre ímpares e pares
         for (int i = 0; i < vTodos.length; i++) {
-            // if(vImpar[5])
+            if (vTodos[i] % 2 == 0) {
+                // Se houver valor na última posição, de acordo com a paridade, vou imprimir e replicar
+                if (vPar[4] != 0) {
+                    for(int j = 0; j < vPar.length; j++) {
+                        System.out.printf("par[%d] = %d%n", IContagemPar, vPar[j]);
+                    }
+                    vPar[4] = 0; // Resetando a última posição (para ir populando o arr no else da paridade)
+                    IContagemPar = 0; // Resetando interação da paridade
+                    vPar[IContagemPar] = vTodos[i];
+                    IContagemPar++;
+                } else {
+                    vPar[IContagemPar] = vTodos[i];
+                    IContagemPar++;
+                }
+            } else {
+                if (vImpar[4] != 0) {
+                    for (int j = 0; i < vImpar.length; i++) {
+                        System.out.printf("impar[%d] = %d%n", IContagemImpar, vImpar[j]);
+                    }
+                    vImpar[4] = 0;
+                    IContagemImpar = 0;
+                    vImpar[IContagemImpar] = vTodos[i];
+                    IContagemImpar++;
+                } else {
+                    vImpar[IContagemImpar] = vTodos[i];
+                    IContagemImpar++;
+                }
+            }
         }
 
+        in.close();
 
     }
 }
