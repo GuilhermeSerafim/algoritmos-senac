@@ -17,11 +17,26 @@ import java.util.Scanner;
 public class Ex2 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int nrAlunos = in.nextInt();
-        int numeroSorteado = in.nextInt();
-        
-        System.out.println(nrAlunos);
-        System.out.println(numeroSorteado);
+        String[] palavras = { "banana", "apple", "zebra", "grape", "orange" };
+
+        // Bubble Sort com comparação lexicográfica
+        for (int i = 0; i < palavras.length - 1; i++) {
+            for (int j = 0; j < palavras.length - i - 1; j++) {
+                // Se estiver fora de ordem, troca
+                if (palavras[j].compareTo(palavras[j + 1]) > 0) {
+                    String temp = palavras[j];
+                    palavras[j] = palavras[j + 1];
+                    palavras[j + 1] = temp;
+                }
+            }
+        }
+
+        // Imprime o array ordenado
+        for (String palavra : palavras) {
+            System.out.print(palavra + " ");
+        }
+
+        System.out.println();
         
         in.close();
     }
