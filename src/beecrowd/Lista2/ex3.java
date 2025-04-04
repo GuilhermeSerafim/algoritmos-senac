@@ -3,39 +3,37 @@ package beecrowd.Lista2;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ex2 {
-
+public class ex3 {
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        in.nextLine();
         char operacaoASerRealizada = in.nextLine().toUpperCase().charAt(0);
-        double soma = 0, media = 0;
         double[][] matriz = new double[12][12];
+        double soma = 0, media = 0;
+
         for (int j = 0; j < matriz.length; j++) {
             for (int i = 0; i < matriz[j].length; i++) {
-                matriz[j][i] = in.nextInt();
+                matriz[j][i] = in.nextDouble();
             }
         }
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                if (j == n) {
-                    soma += matriz[i][j];
+        for (int linha = 0; linha < matriz.length; linha++) {
+            for (int coluna = 0; coluna < matriz[linha].length; coluna++) {
+                // Elementos que estão acima da diagonal principal da matriz
+                if (coluna > linha) {
+                    soma += matriz[linha][coluna];
                 }
-                System.out.printf("%d ", (int) matriz[i][j]);
             }
-            System.out.println();
         }
 
-        media = soma / matriz.length;
+
+        media = soma / 12;
 
         if (operacaoASerRealizada == 'S') {
             System.out.printf("%.1f%n", soma);
         } else {
             System.out.printf("%.1f%n", media);
         }
+
         in.close();
     }
-
 }
