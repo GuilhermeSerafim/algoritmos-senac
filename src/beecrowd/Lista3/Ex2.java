@@ -12,32 +12,38 @@
 
 package beecrowd.Lista3;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Ex2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         Scanner in = new Scanner(System.in);
-        String[] palavras = { "banana", "apple", "zebra", "grape", "orange" };
+        int n = in.nextInt();
+        int k = in.nextInt() - 1;
 
-        // Bubble Sort com comparação lexicográfica
-        for (int i = 0; i < palavras.length - 1; i++) {
-            for (int j = 0; j < palavras.length - i - 1; j++) {
-                // Se estiver fora de ordem, troca
-                if (palavras[j].compareTo(palavras[j + 1]) > 0) {
-                    String temp = palavras[j];
-                    palavras[j] = palavras[j + 1];
-                    palavras[j + 1] = temp;
+        in.nextLine();
+
+        String[] arr = new String[n];
+
+        // Populando
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = in.nextLine();
+        }
+
+        // Bubble sort lexicógrafo
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                // Irá trocar somente se a posição anterior for maior que a posterior
+                if(arr[j].compareTo(arr[j + 1]) > 0) {
+                    String temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
 
-        // Imprime o array ordenado
-        for (String palavra : palavras) {
-            System.out.print(palavra + " ");
-        }
+        System.out.println(arr[k]);
 
-        System.out.println();
-        
         in.close();
     }
 }
