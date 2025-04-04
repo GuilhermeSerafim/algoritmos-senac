@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ex4 {
+public class ex4Desafio {
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
         Random r = new Random();
