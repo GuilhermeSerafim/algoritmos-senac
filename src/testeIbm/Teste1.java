@@ -40,3 +40,4 @@ public class Teste1 {
         }
         return temVogal && temConsoante;
     }
+}
