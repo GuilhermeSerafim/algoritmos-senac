@@ -22,7 +22,7 @@ public class Dicionario {
         // Cores ANSI
         final String RED = "\u001B[31m";
         final String BLUE = "\u001B[34m";
-        final String RESET = "\u  001B[0m";
+        final String RESET = "\u001B[0m";
         String[] dicionario = new String[1000];
         int contador = 0;
         File file = new File("src/atividades/txt");
