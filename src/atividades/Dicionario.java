@@ -19,6 +19,10 @@ import java.util.Scanner;
 
 public class Dicionario {
     public static void main(String[] args) {
+        // Cores ANSI
+        final String RED = "\u001B[31m";
+        final String BLUE = "\u001B[34m";
+        final String RESET = "\u  001B[0m";
         String[] dicionario = new String[1000];
         int contador = 0;
         File file = new File("src/atividades/txt");
@@ -27,43 +31,61 @@ public class Dicionario {
                 String[] palavrasDaLinha = leitor.nextLine().toLowerCase().split("\\s+");
                 for (int i = 0; i < palavrasDaLinha.length; i++) {
                     if (!palavrasDaLinha[i].isEmpty()) {
-                        dicionario[contador] = palavrasDaLinha[i];
-                        contador++;
+                        int posicaoASerInserida = buscaBinariaInsercao(dicionario, contador, palavrasDaLinha[i]);
+                        if (posicaoASerInserida != -1) { 
+                            dicionario[posicaoASerInserida] = palavrasDaLinha[i];
+                            contador++; 
+                        }
+
                     }
                 }
             }
-
-            System.out.println("Não ordenado: ");
-            for (int i = 0; i < contador; i++) {
-                System.out.printf("[%s], ", dicionario[i]);
-            }
-            System.out.println();
-
-            System.out.println("Ordenado: ");
-            bubbleSort(dicionario, contador);
-            for (int i = 0; i < contador; i++) {
-                System.out.printf("[%s], ", dicionario[i]);
-            }
-            System.out.println();
-
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: " + file.getAbsolutePath());
 
         }
 
-    }
-
-    public static void bubbleSort(String arr[], int lenght) {
-        // Bubble sort lexicógrafo
-        for (int i = 0; i < lenght - 1; i++) {
-            for (int j = 0; j < lenght - i - 1; j++) {
-                // Irá trocar somente se a posição anterior for maior que a posterior
-                if (arr[j].compareTo(arr[j + 1]) > 0) {
-                    String temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
+        // Exibição
+        System.out.print(RED + "NÃO ORDENADO: " + RESET);
+        for (int i = 0; i < contador; i++) {
+            if (i == contador - 1) {
+                System.out.printf("[%s].", dicionario[i]); // último elemento sem vírgula
+            } else {
+                System.out.printf("[%s], ", dicionario[i]);
             }
         }
+        System.out.println();
+
     }
+
+    // REFATORAR ESSA FUNÇÃO, APENAS USE A BUSCA BINARIA, DEPOIS UMA LINEAR PARA IDENTIFICAR A POSIÇÃO PARA SER INSERIDA
+    /**
+     * Retorna a posição de inserção de uma palavra em um vetor ordenado.
+     * Mantém a ordem lexicográfica: tudo antes de 'inicio' é menor, e tudo após,
+     * maior.
+     * Se a palavra já existir, retorna -1. 
+     *
+     * @param vetor   Vetor ordenado de strings.
+     * @param tamanho Quantidade de elementos válidos no vetor.
+     * @param palavra Palavra a ser inserida.
+     * @return Índice de inserção ou -1 se já existir.
+     */
+    public static int buscaBinariaInsercao(String[] vetor, int tamanho, String palavra) {
+        int inicio = 0;
+        int fim = tamanho - 1;
+        while (inicio <= fim) {
+            int meio = (inicio + fim) / 2;
+            int comparacao = vetor[meio].compareTo(palavra);
+            if (comparacao == 0) {
+                return -1; // Palavra já existe no dicionário.
+            } else if (comparacao < 0) {
+                inicio = meio + 1; // Inicio vai para direita
+            } else {
+                fim = meio - 1; // Fim vai para esquerda
+            }
+        }
+        // 'inicio' é a posição correta de inserção se a palavra não existir.
+        return inicio;
+    }
+
 }
