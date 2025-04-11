@@ -58,7 +58,7 @@ public class Dicionario {
 
     }
 
-    // REFATORAR ESSA FUNÇÃO, APENAS USE A BUSCA BINARIA, DEPOIS UMA LINEAR PARA IDENTIFICAR A POSIÇÃO PARA SER INSERIDA
+    // REFATORAR ESSA FUNÇÃO, APENAS USE A BUSCA BINARIA NORMAL E USE O RESULTADO DA MESMA, DEPOIS UMA LINEAR PARA IDENTIFICAR A POSIÇÃO PARA SER INSERIDA
     /**
      * Retorna a posição de inserção de uma palavra em um vetor ordenado.
      * Mantém a ordem lexicográfica: tudo antes de 'inicio' é menor, e tudo após,
