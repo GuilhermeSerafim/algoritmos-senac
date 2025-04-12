@@ -28,13 +28,16 @@ public class Dicionario {
         File file = new File("src/atividades/txt");
         try (Scanner leitor = new Scanner(file)) { // Usando try-with-resources para fechar o Scanner automaticamente
             while (leitor.hasNextLine()) {
-                String[] palavrasDaLinha = leitor.nextLine().toLowerCase().split("\\s+");
+                String[] palavrasDaLinha = leitor.nextLine().toLowerCase().split(" ");
                 for (int i = 0; i < palavrasDaLinha.length; i++) {
-                    if (!palavrasDaLinha[i].isEmpty()) {
-                        int posicaoASerInserida = buscaBinariaInsercao(dicionario, contador, palavrasDaLinha[i]);
-                        if (posicaoASerInserida != -1) { 
-                            dicionario[posicaoASerInserida] = palavrasDaLinha[i];
-                            contador++; 
+                    if (!palavrasDaLinha[i].isEmpty() && buscaBinaria(dicionario, palavrasDaLinha[i]) == -1) {
+                        // Busca linear
+                        for (int j = 0; j < dicionario.length; j++) {
+                            if(dicionario[j].compareTo(dicionario[j + 1]) > 0) {
+                                String temp = dicionario[j];
+                                dicionario[j] = dicionario[j + 1];
+                                dicionario[j + 1] = temp;
+                            }
                         }
 
                     }
@@ -58,34 +61,25 @@ public class Dicionario {
 
     }
 
-    // REFATORAR ESSA FUNÇÃO, APENAS USE A BUSCA BINARIA NORMAL E USE O RESULTADO DA MESMA, DEPOIS UMA LINEAR PARA IDENTIFICAR A POSIÇÃO PARA SER INSERIDA
-    /**
-     * Retorna a posição de inserção de uma palavra em um vetor ordenado.
-     * Mantém a ordem lexicográfica: tudo antes de 'inicio' é menor, e tudo após,
-     * maior.
-     * Se a palavra já existir, retorna -1. 
-     *
-     * @param vetor   Vetor ordenado de strings.
-     * @param tamanho Quantidade de elementos válidos no vetor.
-     * @param palavra Palavra a ser inserida.
-     * @return Índice de inserção ou -1 se já existir.
-     */
-    public static int buscaBinariaInsercao(String[] vetor, int tamanho, String palavra) {
+    public static int buscaBinaria(String[] vetor, String chave) {
         int inicio = 0;
-        int fim = tamanho - 1;
+        int fim = vetor.length - 1;
+
         while (inicio <= fim) {
             int meio = (inicio + fim) / 2;
-            int comparacao = vetor[meio].compareTo(palavra);
+
+            int comparacao = vetor[meio].compareTo(chave);
+
             if (comparacao == 0) {
-                return -1; // Palavra já existe no dicionário.
+                return meio; // Encontrou
             } else if (comparacao < 0) {
-                inicio = meio + 1; // Inicio vai para direita
+                inicio = meio + 1; // Vai pra direita
             } else {
-                fim = meio - 1; // Fim vai para esquerda
+                fim = meio - 1; // Vai pra esquerda
             }
         }
-        // 'inicio' é a posição correta de inserção se a palavra não existir.
-        return inicio;
+
+        return -1; // Não encontrou
     }
 
 }
