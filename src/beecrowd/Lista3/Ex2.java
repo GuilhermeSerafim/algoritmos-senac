@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Ex2 {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int k = in.nextInt() - 1;
@@ -34,7 +34,7 @@ public class Ex2 {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
                 // Irá trocar somente se a posição anterior for maior que a posterior
-                if(arr[j].compareTo(arr[j + 1]) > 0) {
+                if (arr[j].compareTo(arr[j + 1]) > 0) {
                     String temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
