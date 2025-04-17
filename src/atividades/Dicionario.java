@@ -19,20 +19,21 @@ import java.util.Scanner;
 
 public class Dicionario {
     public static void main(String[] args) {
-        // Cores ANSI
-        final String RED = "\u001B[31m";
-        final String BLUE = "\u001B[34m";
-        final String RESET = "\u001B[0m";
         String[] dicionario = new String[1000];
         int contador = 0;
+
         File file = new File("src/atividades/txt");
+
         try (Scanner leitor = new Scanner(file)) { // Usando try-with-resources para fechar o Scanner automaticamente
             while (leitor.hasNextLine()) {
+                // Lê a linha e divide separa as palavras no array
                 String[] palavrasDaLinha = leitor.nextLine().toLowerCase().split(" ");
+                // Percorre as palavras daquela linha
                 for (int i = 0; i < palavrasDaLinha.length; i++) {
-                    if (!palavrasDaLinha[i].isEmpty() && buscaBinaria(dicionario, palavrasDaLinha[i]) == -1) {
+                    // Verificando se não é uma String vazia -> " " e se foi não foi achado a palavra no DICIONÁRIO
+                    if (!palavrasDaLinha[i].isEmpty() && buscaBinaria(dicionario, palavrasDaLinha[i], contador) == -1) {
                         // Busca linear
-                        for (int j = 0; j < dicionario.length; j++) {
+                        for (int j = 0; j < dicionario.length - 1; j++) { // - 1 faz sentido? Indexofbound?
                             if(dicionario[j].compareTo(dicionario[j + 1]) > 0) {
                                 String temp = dicionario[j];
                                 dicionario[j] = dicionario[j + 1];
@@ -45,11 +46,10 @@ public class Dicionario {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: " + file.getAbsolutePath());
-
         }
 
         // Exibição
-        System.out.print(RED + "NÃO ORDENADO: " + RESET);
+        System.out.print("NÃO ORDENADO: ");
         for (int i = 0; i < contador; i++) {
             if (i == contador - 1) {
                 System.out.printf("[%s].", dicionario[i]); // último elemento sem vírgula
@@ -61,9 +61,9 @@ public class Dicionario {
 
     }
 
-    public static int buscaBinaria(String[] vetor, String chave) {
+    public static int buscaBinaria(String[] vetor, String chave, int length) {
         int inicio = 0;
-        int fim = vetor.length - 1;
+        int fim = length - 1;
 
         while (inicio <= fim) {
             int meio = (inicio + fim) / 2;
