@@ -3,14 +3,14 @@ package atividades;
 public class Testes {
     public static void main(String[] args) {
         int[] arr = {2, 4, 5, 6, 7, 1};
-        String[] arr2 = {"e", "b", "c", "d"};
+        String[] arr2 = {"e", "c", "b", "d"};
         System.out.println(buscaLinearMenorNumero(arr));
-        System.out.println(buscaLinearMenorNumero(arr2));
+        System.out.println(buscaLinearMenorNumero(arr2, 2));
     }
 
     public static int buscaLinearMenorNumero(int arr[]) {
         int menorNumero = arr[0];
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             if(arr[i] < menorNumero) {
                 menorNumero = arr[i];
             }
@@ -18,10 +18,10 @@ public class Testes {
         return menorNumero;
     }
 
-    public static String buscaLinearMenorNumero(String arr[]) {
+    public static String buscaLinearMenorNumero(String arr[], int length) {
         String menorStr = arr[0];
 
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 0; i < length; i++) {
             if(arr[i].compareTo(menorStr) < 0) {
                 menorStr = arr[i];
             }

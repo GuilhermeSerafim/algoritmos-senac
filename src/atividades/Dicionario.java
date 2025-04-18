@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class Dicionario {
     public static void main(String[] args) {
         String[] dicionario = new String[1000];
-        int contador = 0;
+        int posicoesPreenchidasDicionario = 0;
 
         File file = new File("src/atividades/txt");
 
@@ -31,15 +31,9 @@ public class Dicionario {
                 // Percorre as palavras daquela linha
                 for (int i = 0; i < palavrasDaLinha.length; i++) {
                     // Verificando se não é uma String vazia -> " " e se foi não foi achado a palavra no DICIONÁRIO
-                    if (!palavrasDaLinha[i].isEmpty() && buscaBinaria(dicionario, palavrasDaLinha[i], contador) == -1) {
-                        // Busca linear
-                        for (int j = 0; j < dicionario.length - 1; j++) { // - 1 faz sentido? Indexofbound?
-                            if(dicionario[j].compareTo(dicionario[j + 1]) > 0) {
-                                String temp = dicionario[j];
-                                dicionario[j] = dicionario[j + 1];
-                                dicionario[j + 1] = temp;
-                            }
-                        }
+                    if (!palavrasDaLinha[i].isEmpty() && buscaBinaria(dicionario, palavrasDaLinha[i], posicoesPreenchidasDicionario) == -1) {
+                        // Busca linear para encontrar a menor posição e inserir ordenado
+                        
 
                     }
                 }
@@ -47,17 +41,6 @@ public class Dicionario {
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: " + file.getAbsolutePath());
         }
-
-        // Exibição
-        System.out.print("NÃO ORDENADO: ");
-        for (int i = 0; i < contador; i++) {
-            if (i == contador - 1) {
-                System.out.printf("[%s].", dicionario[i]); // último elemento sem vírgula
-            } else {
-                System.out.printf("[%s], ", dicionario[i]);
-            }
-        }
-        System.out.println();
 
     }
 
