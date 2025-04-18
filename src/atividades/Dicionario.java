@@ -30,10 +30,24 @@ public class Dicionario {
                 String[] palavrasDaLinha = leitor.nextLine().toLowerCase().split(" ");
                 // Percorre as palavras daquela linha
                 for (int i = 0; i < palavrasDaLinha.length; i++) {
-                    // Verificando se não é uma String vazia -> " " e se foi não foi achado a palavra no DICIONÁRIO
+                    // Inserção com verificação
+                    // -> Para garantir que não tenhamos palavras repetidas no dicionário do Samuel, para cada palavra lida no arquivo texto deve feita a busca no dicionário (usando a busca binária), caso a palavra já conste no dicionário a palavra lida deve ser descartada
                     if (!palavrasDaLinha[i].isEmpty() && buscaBinaria(dicionario, palavrasDaLinha[i], posicoesPreenchidasDicionario) == -1) {
                         // Busca linear para encontrar a menor posição e inserir ordenado
-                        
+                        if(posicoesPreenchidasDicionario > 0) {
+                            String menorString = dicionario[0];
+                            int indiceASerInserido = 0;
+                            // Caso contrário a palavra deverá ser inserida no dicionário (vetor) de forma ordenada, essa operação deve gastar no máximo N passos para cada palavra nova.
+                            for (int j = 0; j < posicoesPreenchidasDicionario; j++) {
+                                if(dicionario[j].compareTo(menorString) > 0) {
+                                    menorString = dicionario[j];
+                                    indiceASerInserido = j;
+                                }
+                            }
+                        } else {
+                            dicionario[0] = palavrasDaLinha[i];
+                            posicoesPreenchidasDicionario++;
+                        }
 
                     }
                 }
