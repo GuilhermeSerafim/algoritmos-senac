@@ -55,7 +55,7 @@ public class Dicionario {
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: " + file.getAbsolutePath());
         }
-
+        
     }
 
     public static int buscaBinaria(String[] vetor, String chave, int length) {

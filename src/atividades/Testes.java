@@ -1,6 +1,5 @@
 package atividades;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Testes {
@@ -22,7 +21,9 @@ public class Testes {
         }
         dicionario[pos] = palavra;
         validas++;
-        System.out.println(Arrays.toString(Arrays.copyOf(dicionario, validas)));
+        for (int i = 0; i < dicionario.length; i++) {
+            System.out.print(dicionario[i] + " ");
+        }
         in.close();
     }
 }
