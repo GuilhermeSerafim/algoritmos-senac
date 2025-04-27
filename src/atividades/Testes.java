@@ -1,8 +1,29 @@
 package atividades;
 
+import java.util.Scanner;
+
 public class Testes {
     public static void main(String[] args) {
-        String a = "a", b = "b";
-        System.out.println(a.compareTo(a));;
+        Scanner in = new Scanner(System.in);
+        String palavra = in.nextLine();
+        String[] dicionario = new String[1000];
+        dicionario[0] = "a";
+        dicionario[1] = "b";
+        dicionario[2] = "c";
+        dicionario[3] = "e";
+        int validas = 4;
+        int pos = 0;
+        while (pos < validas && dicionario[pos].compareTo(palavra) < 0) {
+            pos++;
+        }
+        for (int i = validas; i > pos; i--) {
+            dicionario[i] = dicionario[i - 1];
+        }
+        dicionario[pos] = palavra;
+        validas++;
+        for (int i = 0; i < dicionario.length; i++) {
+            System.out.print(dicionario[i] + " ");
+        }
+        in.close();
     }
 }

@@ -1,8 +1,11 @@
+package atividades;
+
 /*
     Entrega a Atividade 2 - Algoritmos e Programação II
 
     Eu,  
-    Guilherme da Silva Serafim,  
+    Guilherme da Silva Serafim, 
+    Kayky de Lemos Costa 
     declaro que  
 
     todas as respostas são fruto do meu trabalho,  
@@ -11,75 +14,84 @@
     não realizo quaisquer outras atividades desonestas para me beneficiar ou prejudicar outros.
 */
 
-package atividades;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Dicionario {
     public static void main(String[] args) {
-        // Cores ANSI
-        final String RED = "\u001B[31m";
-        final String BLUE = "\u001B[34m";
-        final String RESET = "\u001B[0m";
+        // vetor de palavras únicas (capacidade máxima de 1000)
         String[] dicionario = new String[1000];
-        int contador = 0;
-        File file = new File("src/atividades/txt");
-        try (Scanner leitor = new Scanner(file)) { // Usando try-with-resources para fechar o Scanner automaticamente
-            while (leitor.hasNextLine()) {
-                String[] palavrasDaLinha = leitor.nextLine().toLowerCase().split(" ");
-                for (int i = 0; i < palavrasDaLinha.length; i++) {
-                    if (!palavrasDaLinha[i].isEmpty() && buscaBinaria(dicionario, palavrasDaLinha[i]) == -1) {
-                        // Busca linear
-                        for (int j = 0; j < dicionario.length; j++) {
-                            if(dicionario[j].compareTo(dicionario[j + 1]) > 0) {
-                                String temp = dicionario[j];
-                                dicionario[j] = dicionario[j + 1];
-                                dicionario[j + 1] = temp;
-                            }
-                        }
+        // contador de palavras válidas inseridas
+        int totalPalavras = 0;
+        // arquivo de entrada contendo o texto a ser processado
+        File arquivo = new File("src/atividades/txt");
 
+        // abre o arquivo e cria Scanner para leitura
+        try (Scanner leitor = new Scanner(arquivo)) {
+            // enquanto houver linhas a ler
+            while (leitor.hasNextLine()) {
+                // lê a próxima linha e normaliza para minúsculas
+                String linha = leitor.nextLine().toLowerCase();
+                // separa a linha em termos usando espaço como delimitador
+                String[] termos = linha.split(" ");
+                // processa cada termo extraído
+                for (String termo : termos) {
+                    // ignora termos vazios causados por múltiplos espaços
+                    if (termo.isEmpty()) {
+                        continue;
+                    }
+                    // verifica duplicata com busca binária em posições válidas
+                    if (buscaBinaria(dicionario, termo, totalPalavras) == -1) {
+                        // determina posição correta para manter vetor ordenado
+                        int posInsercao = 0;
+                        while (posInsercao < totalPalavras &&
+                               dicionario[posInsercao].compareTo(termo) < 0) {
+                            posInsercao++;
+                        }
+                        // desloca palavras à direita a partir de posInsercao
+                        for (int i = totalPalavras; i > posInsercao; i--) {
+                            dicionario[i] = dicionario[i - 1];
+                        }
+                        // insere o termo na posição correta
+                        dicionario[posInsercao] = termo;
+                        totalPalavras++;
                     }
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Arquivo não encontrado: " + file.getAbsolutePath());
-
+            System.out.println("Arquivo não encontrado: " + arquivo.getAbsolutePath());
         }
 
-        // Exibição
-        System.out.print(RED + "NÃO ORDENADO: " + RESET);
-        for (int i = 0; i < contador; i++) {
-            if (i == contador - 1) {
-                System.out.printf("[%s].", dicionario[i]); // último elemento sem vírgula
-            } else {
-                System.out.printf("[%s], ", dicionario[i]);
-            }
+        // imprime as palavras únicas em ordem alfabética
+        for (int i = 0; i < totalPalavras; i++) {
+            System.out.println(dicionario[i]);
         }
-        System.out.println();
-
+        // exibe contagem total de palavras distintas encontradas
+        System.out.println("total de palavras diferentes no dicionario=" + totalPalavras);
     }
 
-    public static int buscaBinaria(String[] vetor, String chave) {
+    /**
+     * Busca binária em vetor ordenado de Strings.
+     * @param vetor   vetor onde pesquisar
+     * @param chave   termo a ser buscado
+     * @param limite  número de posições válidas no vetor
+     * @return índice do termo ou -1 se não encontrado
+     */
+    public static int buscaBinaria(String[] vetor, String chave, int limite) {
         int inicio = 0;
-        int fim = vetor.length - 1;
-
+        int fim = limite - 1;
         while (inicio <= fim) {
             int meio = (inicio + fim) / 2;
-
-            int comparacao = vetor[meio].compareTo(chave);
-
-            if (comparacao == 0) {
-                return meio; // Encontrou
-            } else if (comparacao < 0) {
-                inicio = meio + 1; // Vai pra direita
+            int cmp = vetor[meio].compareTo(chave);
+            if (cmp == 0) {
+                return meio;
+            } else if (cmp < 0) {
+                inicio = meio + 1;
             } else {
-                fim = meio - 1; // Vai pra esquerda
+                fim = meio - 1;
             }
         }
-
-        return -1; // Não encontrou
+        return -1;
     }
-
 }

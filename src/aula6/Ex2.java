@@ -15,6 +15,7 @@ public class Ex2 {
         System.out.println();
         System.out.print("Base " + base + " :");
         converteBaseDecimalPara(n, base);
+        in.close();
    }
 
     public static void binario(int n) {
