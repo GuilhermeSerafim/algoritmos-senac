@@ -1,5 +1,7 @@
 package aula7;
 
+import java.util.Comparator;
+
 // Molder
 public class Produto implements Comparable<Produto> {
     // Modificadores de acesso
@@ -36,8 +38,30 @@ public class Produto implements Comparable<Produto> {
     @Override
     public int compareTo(Produto outro) {
         // ordem CRESCENTE
-        if (this.codigo < outro.codigo) return -1;  // menor → antes
-        if (this.codigo == outro.codigo) return 0;  // igual
-        return 1;                                   // maior → depois
+        if (this.codigo < outro.codigo)
+            return -1; // menor → antes
+        if (this.codigo == outro.codigo)
+            return 0; // igual
+        return 1; // maior → depois
     }
+
+    // Função anonima
+    public static final Comparator<Produto> COMPARADOR_DESCRICAO = new Comparator<Produto>() {
+        @Override
+        public int compare(Produto o1, Produto o2) {
+            return o1.desc.compareToIgnoreCase(o2.desc);
+        }
+    };
+
+    public static final Comparator<Produto> COMPARADOR_PRECO = new Comparator<Produto>() {
+        @Override
+        public int compare(Produto o1, Produto o2) {
+            if (o1.preco < o2.preco)
+                return -1;
+            else if (o1.preco == o2.preco)
+                return 0;
+            else
+                return 1;
+        }
+    };
 }
