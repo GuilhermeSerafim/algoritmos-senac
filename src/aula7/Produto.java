@@ -34,13 +34,10 @@ public class Produto implements Comparable<Produto> {
     }
 
     @Override
-    public int compareTo(Produto arg0) {
-        // TODO Auto-generated method stub
-        if (this.codigo < arg0.codigo)
-            return -1;
-        else if (this.codigo == arg0.codigo)
-            return 0;
-        else
-            return 1;
+    public int compareTo(Produto outro) {
+        // ordem CRESCENTE
+        if (this.codigo < outro.codigo) return -1;  // menor → antes
+        if (this.codigo == outro.codigo) return 0;  // igual
+        return 1;                                   // maior → depois
     }
 }
